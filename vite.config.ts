@@ -14,5 +14,8 @@ export default defineConfig({
   test: {
     include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     environment: 'node',
+    // Kalıcı modül önbelleği dosya içeriğine bakar; decks/'e yeni deste eklenince
+    // loader'daki import.meta.glob sonucunu bayat bırakır. Test takımı zaten ~1 sn.
+    fsModuleCache: false,
   },
 });
