@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.env
+.env.*
+
+# Kullanıcının ham notları git'e girmez
+notes/*
+!notes/.gitkeep
+
+# Yerel araç ayarları
+.claude/

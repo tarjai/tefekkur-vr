@@ -1,0 +1,289 @@
+/* 2D başlangıç ve kapanış ekranları. Renkler VR sahnesiyle uyumlu; saf siyah yok. */
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('/fonts/NotoSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --bg: #0d1130;
+  --panel: rgba(14, 18, 48, 0.78);
+  --panel-border: rgba(169, 184, 255, 0.18);
+  --text: #eef0ff;
+  --muted: #a6acd6;
+  --accent: #a9b8ff;
+  --accent-strong: #c8d1ff;
+  --warning: #ffd59a;
+  --error: #ffb3b3;
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 24px 16px;
+}
+
+#scene-root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+#scene-root canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.panel {
+  position: relative;
+  z-index: 1;
+  width: min(460px, 100%);
+  padding: 28px 28px 20px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+h1,
+h2 {
+  margin: 0 0 4px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  margin: 0 0 24px;
+  color: var(--muted);
+}
+
+.field {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.field label,
+.field legend {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  color: var(--text);
+  background: rgba(8, 10, 30, 0.7);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.meta {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.warning {
+  margin: 8px 0 0;
+  color: var(--warning);
+  font-size: 0.875rem;
+}
+
+.errors {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--error);
+  font-size: 0.8rem;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.segmented label {
+  position: relative;
+  margin: 0;
+}
+
+.segmented input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.segmented span {
+  display: block;
+  padding: 12px 0;
+  text-align: center;
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.segmented input:checked + span {
+  background: rgba(169, 184, 255, 0.18);
+  border-color: var(--accent);
+}
+
+.segmented input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.primary {
+  width: 100%;
+  padding: 14px 18px;
+  color: #10143a;
+  background: var(--accent-strong);
+  border: 0;
+  border-radius: 12px;
+  font-size: 1.05rem;
+}
+
+.primary:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.secondary {
+  padding: 14px 18px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+}
+
+.link {
+  padding: 0;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link:disabled {
+  color: var(--muted);
+  text-decoration: none;
+  cursor: default;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.status.error {
+  color: var(--error);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--panel-border);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.dev {
+  margin: 10px 0 0;
+  color: var(--warning);
+  font-size: 0.8rem;
+}
+
+.question {
+  display: block;
+  margin: 16px 0 10px;
+  font-size: 1.25rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.toast {
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 10px 16px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+}
+
+.toast[hidden] {
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .panel {
+    padding: 22px 18px 16px;
+  }
+}

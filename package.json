@@ -1,0 +1,30 @@
+{
+  "name": "tefekkur-vr",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Meta Quest 3 için WebXR tabanlı kişisel tefekkür (düşünce sindirme) aracı",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "build-deck": "tsx scripts/build-deck.ts"
+  },
+  "dependencies": {
+    "three": "0.186.1",
+    "troika-three-text": "0.52.5",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "0.135.0",
+    "@types/node": "26.6.5",
+    "@types/three": "0.186.0",
+    "iwer": "2.6.0",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
+  }
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Tefekkür</title>
+    <link rel="stylesheet" href="./src/ui/style.css" />
+  </head>
+  <body>
+    <div id="scene-root" aria-hidden="true"></div>
+
+    <main id="start-screen" class="panel" hidden>
+      <h1 id="app-title"></h1>
+      <p id="app-subtitle" class="subtitle"></p>
+
+      <div class="field">
+        <label id="deck-label" for="deck-select"></label>
+        <select id="deck-select"></select>
+        <p id="deck-meta" class="meta"></p>
+        <p id="deck-warning" class="warning" hidden></p>
+        <ul id="deck-errors" class="errors" hidden></ul>
+      </div>
+
+      <fieldset class="field">
+        <legend id="duration-label"></legend>
+        <div id="duration-options" class="segmented"></div>
+      </fieldset>
+
+      <button id="enter-vr" class="primary" type="button" disabled></button>
+      <p id="xr-status" class="status" role="status"></p>
+
+      <footer class="footer">
+        <span id="sessions-count"></span>
+        <button id="export" class="link" type="button"></button>
+      </footer>
+      <p id="dev-flags" class="dev" hidden></p>
+    </main>
+
+    <main id="closing-screen" class="panel" hidden>
+      <h2 id="closing-title"></h2>
+      <p id="closing-note" class="meta" hidden></p>
+      <label id="closing-question" class="question" for="closing-answer"></label>
+      <textarea id="closing-answer" rows="7"></textarea>
+      <div class="row">
+        <button id="closing-save" class="primary" type="button"></button>
+        <button id="closing-skip" class="secondary" type="button"></button>
+      </div>
+    </main>
+
+    <p id="toast" class="toast" role="status" hidden></p>
+
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
